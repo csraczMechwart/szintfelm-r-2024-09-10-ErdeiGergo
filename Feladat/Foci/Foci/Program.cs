@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Feladatok f = new("meccs.txt");
+            Feladatok f = new Feladatok("meccs.txt");
+            f.Feladat2();
         }
     }
 }

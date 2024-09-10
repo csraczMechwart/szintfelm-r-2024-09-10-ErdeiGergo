@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32.SafeHandles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,10 @@ namespace Foci
 {
     internal class Feladatok
     {            
-        public List<Meccs> meccsek;
+        public static List<Meccs> meccsek;
         public Feladatok(string filename)
         {
-            foreach (var item in File.ReadAllLines(filename, Encoding.UTF8))
+            foreach (var item in File.ReadAllLines(filename, Encoding.UTF8).Skip(1))
             {
                 string[] reszek = item.Split(" ");
                 int fordulo = Convert.ToInt32(reszek[0]);
@@ -25,6 +26,19 @@ namespace Foci
                 meccsek.Add(uj);
             }
         } 
-        //
+        
+        public void Feladat2()
+        {
+            Console.WriteLine("2. feladat:");
+            Console.Write("Írja be egy fordulónak a számát: ");
+            int megadottFordulo = Console.Read();
+            for (int i = 0; i < meccsek.Count(); i++)
+            {
+                if (meccsek[i].Fordulo == megadottFordulo)
+                {
+                    Console.WriteLine($"{meccsek[i].HazaiCsapat}-{meccsek[i].VendegCsapat}: {meccsek[i].HazaiVegeredmeny}-{meccsek[i].VendegCsapat} ({meccsek[i].HazaiFelido}-{meccsek[i].VendegFelido})");
+                }
+            }
+        }
     }
 }
