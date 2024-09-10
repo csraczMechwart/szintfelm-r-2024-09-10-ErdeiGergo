@@ -9,7 +9,7 @@ namespace Foci
 {
     internal class Feladatok
     {            
-        public static List<Meccs> meccsek;
+        public static List<Meccs> meccsek = new();
         public Feladatok(string filename)
         {
             foreach (var item in File.ReadAllLines(filename, Encoding.UTF8).Skip(1))
@@ -31,7 +31,7 @@ namespace Foci
         {
             Console.WriteLine("2. feladat:");
             Console.Write("Írja be egy fordulónak a számát: ");
-            int megadottFordulo = Console.Read();
+            int megadottFordulo = Convert.ToInt32(Console.ReadLine());
             for (int i = 0; i < meccsek.Count(); i++)
             {
                 if (meccsek[i].Fordulo == megadottFordulo)
