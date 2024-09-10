@@ -10,6 +10,7 @@ namespace Foci
     internal class Feladatok
     {            
         public static List<Meccs> meccsek = new();
+        string csapatnev;
         public Feladatok(string filename)
         {
             foreach (var item in File.ReadAllLines(filename, Encoding.UTF8).Skip(1))
@@ -55,6 +56,20 @@ namespace Foci
                     Console.WriteLine($"{meccsek[i].Fordulo}. forduló {meccsek[i].VendegCsapat}");
                 }
             }
+        }
+
+        public void Feladat4()
+        {
+            Console.Write("\nÍrjon be egy csapat nevet: ");
+            csapatnev = Console.ReadLine();
+        }
+
+        public void Feladat5()
+        {
+            Console.WriteLine("\n5. feladat:");
+            int lott = meccsek.Where(x => x.HazaiCsapat == csapatnev).Sum(x => x.HazaiVegeredmeny) + meccsek.Where(x => x.VendegCsapat == csapatnev).Sum(x => x.VendegVegeredmeny);
+            int kapott = meccsek.Where(x => x.HazaiCsapat == csapatnev).Sum(x => x.VendegVegeredmeny) + meccsek.Where(x => x.VendegCsapat == csapatnev).Sum(x => x.HazaiVegeredmeny);
+            Console.WriteLine($"lőtt: {lott} kapott: {kapott}");
         }
     }
 }
