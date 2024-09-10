@@ -71,5 +71,27 @@ namespace Foci
             int kapott = meccsek.Where(x => x.HazaiCsapat == csapatnev).Sum(x => x.VendegVegeredmeny) + meccsek.Where(x => x.VendegCsapat == csapatnev).Sum(x => x.HazaiVegeredmeny);
             Console.WriteLine($"lőtt: {lott} kapott: {kapott}");
         }
+
+        public void Feladat6()
+        {
+            bool volt = false;
+            int vesztesFordulo = 0;
+            string idegenbeNyertCsapat = "";
+            Console.WriteLine("\n6. feladat:");
+            foreach (var item in meccsek)
+            {
+                if(item.HazaiCsapat == csapatnev && item.HazaiVegeredmeny < item.VendegVegeredmeny && !volt)
+                {
+                    volt = true;
+                    vesztesFordulo = item.Fordulo;
+                    idegenbeNyertCsapat = item.VendegCsapat;
+                }
+            }
+            if (volt)
+                Console.WriteLine($"A(z) {csapatnev} csapat {vesztesFordulo}. fordulóban kaptak ki elsőnek othon, a(z) {idegenbeNyertCsapat} csapattól");
+            else
+                Console.WriteLine($"A(z) {csapatnev} csapat otthon veretlen maradt");
+
+        }
     }
 }

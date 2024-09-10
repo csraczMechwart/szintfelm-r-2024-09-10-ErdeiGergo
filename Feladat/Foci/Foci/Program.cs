@@ -9,6 +9,7 @@
             f.Feladat3();
             f.Feladat4();
             f.Feladat5();
+            f.Feladat6();
         }
     }
 }
