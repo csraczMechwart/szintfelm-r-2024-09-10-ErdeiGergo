@@ -40,5 +40,21 @@ namespace Foci
                 }
             }
         }
+
+        public void Feladat3()
+        {
+            Console.WriteLine("\n3. feladat:");
+            for (int i = 0;i < meccsek.Count();i++)
+            {
+                if (meccsek[i].HazaiFelido < meccsek[i].HazaiVegeredmeny)
+                {
+                    Console.WriteLine($"{meccsek[i].Fordulo}. forduló {meccsek[i].HazaiCsapat}");
+                }
+                else if (meccsek[i].VendegFelido < meccsek[i].VendegVegeredmeny)
+                {
+                    Console.WriteLine($"{meccsek[i].Fordulo}. forduló {meccsek[i].VendegCsapat}");
+                }
+            }
+        }
     }
 }

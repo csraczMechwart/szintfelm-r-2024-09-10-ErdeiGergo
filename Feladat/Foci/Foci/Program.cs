@@ -6,6 +6,7 @@
         {
             Feladatok f = new Feladatok("meccs.txt");
             f.Feladat2();
+            f.Feladat3();
         }
     }
 }
